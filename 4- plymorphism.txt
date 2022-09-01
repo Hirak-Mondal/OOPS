@@ -1,0 +1,94 @@
+#include<iostream>
+using namespace std;
+
+class car
+{
+    public:
+    virtual void start()=0;
+   
+};
+class inno : public car
+{
+    public:
+    void start()
+    {
+        cout<<"inno"<<endl;
+    }
+};
+class swift : public car
+{
+    public:
+    void start()
+    {
+        cout <<"Swift"<<endl;
+    }
+};
+int main()
+{
+    car *c= new inno();
+    c-> start();
+    c= new swift();
+    c-> start();
+}
+-----------------------------------------------------
+another example:
+
+#include <iostream>
+using namespace std;
+
+class shape
+{
+    public:
+    virtual float area()=0;
+    virtual float perimeter()=0;
+};
+class rectangle : public shape
+{
+    private:
+    int length;
+    int breadth;
+    public:
+    rectangle (int l=1,int b=1)
+    {
+        length=l;
+        breadth =b;
+    }
+    float area()
+    {
+        return length*breadth;
+    }
+    float perimeter()
+    {
+        return 2*(length + breadth);
+    }
+};
+class circle : public shape
+{
+    private:
+    int radius;
+    public:
+    circle(int r=1)
+    {
+        radius =r;
+    }
+    float area()
+    {
+        return 3.14*radius*radius;
+    }
+    float perimeter()
+    {
+        return 2*3.14*radius;
+    }
+};
+int main()
+{
+    shape *s= new rectangle(5,5);
+    cout << "area of rectangle "<< s-> area()<<endl;
+    cout << "perimeter of rectangle "<<s->perimeter()<<endl;
+    s= new circle(10);
+    cout<<"area of circle "<<s-> area()<<endl;
+    cout <<"perimeter of circle"<<s->perimeter()<<endl;
+    s= new rectangle (7,7);
+    cout << "area of rectangle "<< s-> area()<<endl;
+    cout << "perimeter of rectangle "<<s->perimeter()<<endl;
+}

@@ -1,0 +1,113 @@
+#include <iostream>
+using namespace std;
+
+class complex
+{
+    private :
+    int real;
+    int img;
+
+    public:
+    complex(int r=0,int i=0)
+    {
+        real =r;
+        img=i;
+    }
+    friend ostream &operator <<(ostream &o, complex &c1);
+};
+int main()
+{
+    complex c1(10,5);
+    cout<<c1<<endl;
+}
+ostream &operator << (ostream &o,complex &c1)
+{
+    o<<c1.real<<" +i"<<c1.img;
+    return o;
+}
+----------------------------------------------------------------------------
+rational number addition:
+
+#include<iostream>
+using namespace std;
+
+class rational
+{
+    private:
+    int num;
+    int den;
+
+    public:
+    rational(int n=1,int d=1)
+    {
+        num=n;
+        den=d;
+    }
+    friend rational operator + (rational r1,rational r2);
+    friend ostream & operator<<(ostream &o,rational &r3);
+};
+int main()
+{
+    rational r1(2,3);
+    rational r2(1,2);
+    rational r3;
+    r3= r1+ r2;
+    cout <<r3;
+}
+rational operator + (rational r1, rational r2)
+{
+    rational t;
+    t.num=r1.num*r2.den+r2.num*r1.den;
+    t.den=r1.den*r2.den;
+    return t;
+}
+ostream & operator << (ostream &o,rational &r3)
+{
+    o<<r3.num<<"/"<<r3.den;
+    return o;
+}
+----------------------------------------------------------
+same program another way:
+Program with a Class Rational Number
+#include<iostream>
+using namespace std;
+class Rational
+{
+private:
+int p;
+int q;
+public:
+Rational()
+{
+p=1;
+q=1;
+}
+Rational(int p,int q)
+{
+this->p=p;
+this->q=q;
+}
+Rational(Rational &r)
+{
+this->p=r.p;
+this->q=r.q;
+}
+int getP(){return p;}
+int getQ(){return q;}
+void setP(int p)
+{
+this->p=p;
+}
+void setQ(int q)
+{
+this->q=q;
+}
+Rational operator+(Rational r)
+{
+Rational t;
+t.p=this->p*r.q+this->q*r.p;
+t.q=this->q*r.q;
+return t;
+}
+friend ostream & operator<<(ostream &os,Rational &r);
+};

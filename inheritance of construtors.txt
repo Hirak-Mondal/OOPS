@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+
+class base
+{
+    public:
+    base(){
+         cout<<"Non-para of base"<<endl;
+    }
+    base(int x){
+        cout<<"para of base"<<endl;
+    }
+};
+class derived : public base
+{
+    public:
+    derived(){
+         cout<<"Non-para of derived"<<endl;
+    }
+    derived(int y){
+        cout<<"para of derived"<<endl;
+    }
+    derived(int x, int y) : base(x){
+        cout<<"para of derived"<<endl;
+    }
+};
+int main(){
+    derived d;
+    cout<<endl;
+
+    derived e(5);
+    cout<<endl;
+
+    derived f(1,2);
+    return 0;
+}
+
+
+

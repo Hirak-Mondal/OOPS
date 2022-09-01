@@ -1,0 +1,186 @@
+#include<iostream>
+using namespace std;
+
+class Rectangle
+{
+    private:
+    int length;
+    int breadth;
+
+    public:
+    Rectangle();
+    Rectangle(int l,int b);
+    Rectangle(Rectangle &r);
+    void setLength(int l);
+    void setBreadth(int b);
+    int getLength(){return length;}
+    int getBreadth(){return breadth;}
+    int area();
+    int perimeter();
+    bool isSquare();
+    ~Rectangle();
+};
+class Cuboid : public Rectangle
+{
+    private:
+    int height;
+    public:
+    Cuboid(int h )
+    {
+        height =h;
+    }
+    int getHeight() {return height;}
+    int setHeight(int h){return height =h;}
+    int volume(){return height*getLength()*getBreadth();}
+};
+
+int main()
+{
+    Cuboid c(5);
+    cout<<c.volume()<<endl;
+    cout <<c.getLength()<<endl;
+    cout<<c.getBreadth()<<endl;
+    cout<<c.getHeight()<<endl;
+
+    c.setLength(5);
+    c.setBreadth(10);
+    cout<<c.volume()<<endl;
+    cout <<c.getLength()<<endl;
+    cout<<c.getBreadth()<<endl;
+    cout<<c.getHeight()<<endl;
+    cout<<c.perimeter()<<endl;
+    cout<<c.area()<<endl;
+
+}
+
+Rectangle::Rectangle()
+{
+    length=1;
+    breadth=1;
+}
+Rectangle::Rectangle(int l,int b)
+{
+    length=l;
+    breadth=b;
+}
+Rectangle::Rectangle(Rectangle &r)
+{
+    length = r.length;
+    breadth= r.breadth;
+}
+void Rectangle:: setLength(int l)
+{
+    length =l;
+}
+void Rectangle::setBreadth(int b)
+{
+    breadth =b;
+}
+int Rectangle:: area()
+{
+    return length*breadth;
+}
+int  Rectangle:: perimeter()
+{
+    return 2*(length+breadth);
+}
+bool  Rectangle::isSquare()
+{
+    return length==breadth;
+}
+ Rectangle:: ~Rectangle()
+ {
+     cout <<" Rectangle destroyed";
+ }
+
+-----------------------------------------------------
+#include<iostream>
+using namespace std;
+
+class base
+{
+    public:
+    base()
+    {
+        cout<<"default of base"<<endl;
+    }
+    base (int x)
+    {
+        cout<<"para of base "<<x<<endl;
+    }
+};
+class derived : public base
+{
+    public:
+    derived()
+    {
+        cout<<"default of derived"<<endl;
+    }
+    derived(int a)
+    {
+        cout<<"para of derived "<<a<<endl;
+    }
+    derived(int a,int x):base(x)
+    {
+        cout<<"para of derived "<<a<<endl;
+    }
+};
+int main()
+{
+    derived d;
+    derived d1(10);
+    derived d2(10,20);
+}
+-------------------------------------------------------
+employee-wage-id-salary
+
+#include<iostream>
+using namespace std;
+
+class employee
+{
+    private:
+    int id;
+    string name;
+
+    public:
+    employee(int i,string n)
+    {
+        id=i;
+        name=n;
+    }
+    int getID(){return id;}
+    string getName(){return name;}
+};
+class fulltime: public employee
+{
+    private:
+    int salary;
+
+    public:
+    fulltime(int i,string n,int s): employee(i,n)
+    {
+        salary=s;
+    }
+    int getSalary(){return salary;}
+};
+class parttime:public employee
+{
+    private:
+    int wage;
+
+    public:
+    parttime(int i,string n,int w):employee(i,n)
+    {
+        wage =w;
+    }
+    int getWage(){return wage;}
+};
+int main()
+{
+    fulltime p(1521,"Hirak",50000);
+    parttime f(1412,"Ritam",1000);
+    cout<<"Salary of "<<p.getName()<<" of id "<<p.getID()<<" is "<<p.getSalary()<<endl;
+     cout<<"Wage of "<<f.getName()<<" of id "<<f.getID()<<" is "<<f.getWage()<<endl;
+
+}

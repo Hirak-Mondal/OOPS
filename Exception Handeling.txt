@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int fun(int a, int b){
+    if(b == 0)
+        throw 1;
+    return (a*1.0) / b;
+}
+int main(){
+    int a = 10, b = 0;
+    cin>>a>>b;
+    try{
+        // if(b == 0)
+        //     throw 1;
+        // cout<<"Result is "<<(a*1.0) / b<<endl;
+        int c = fun(a, b);
+        cout<<"Result is "<<c<<endl;
+    }
+    catch(int x){
+        cout<<"Div by zero"<<endl;
+    }
+    return 0;
+}

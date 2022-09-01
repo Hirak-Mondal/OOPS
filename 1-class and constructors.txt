@@ -1,0 +1,131 @@
+#include <iostream>
+using namespace std;
+
+class circle
+{
+    private:
+    int radius;
+
+    public:
+  //  circle() //constructor
+ //   {
+ //       radius =0;
+ //   }
+    circle(int c=0)
+    {
+        setRadius(c);
+    }
+    circle (circle &c)  //copy constructor
+    {
+        radius=c.radius;
+    }
+
+    void setRadius(int c) //data hiding
+    {
+        if(c>0)
+            radius= c;
+        else
+            {cout<<"negative radius "<<endl; radius =0;}
+    }
+    int getRadius()
+    {
+        return radius;
+    }
+    int diameter()
+    {
+        return 2*radius;
+    }
+    float circumference()
+    {
+        return 2*3.14*radius;
+    }
+    float area()
+    {
+        return 3.14*radius*radius;
+    }
+};
+int main()
+{
+    circle c1(5);
+    circle c2(c1);//calling copy constructor
+    //circle *p=new circle();
+  //  p=&c1;
+    //c1.setRadius(67);
+    cout<<c2.getRadius()<<endl;
+    cout<<"diameter is "<< c2.diameter()<<endl;
+    cout<<"circumference is "<<c2.circumference()<<endl;
+    cout << "area is "<<c2.area();
+    return 0;
+}
+--------------------------------------------------------------------------------------
+example 2:
+
+#include<iostream>
+using namespace std;
+
+class Rectangle
+{
+    private:
+    int length;
+    int breadth;
+
+    public:
+    Rectangle();
+    Rectangle(int l=0,int b=0);
+    Rectangle(Rectangle &r);
+    void setLength(int l);
+    void setBreadth(int b);
+    int getLength(){return length;}
+    int getBreadth(){return breadth;}
+    int area();
+    int perimeter();
+    bool isSquare();
+    ~Rectangle();
+};
+int main()
+{
+    Rectangle r1(10,10);
+    cout<<r1.area()<<endl;
+    if(r1.isSquare())
+    {cout<<"yes"<<endl;}
+}
+
+Rectangle::Rectangle()
+{
+    length=0;
+    breadth=0;
+}
+Rectangle::Rectangle(int l,int b)
+{
+    setLength(l);
+    setBreadth(b);
+}
+Rectangle::Rectangle(Rectangle &r)
+{
+    length = r.length;
+    breadth= r.breadth;
+}
+void Rectangle:: setLength(int l)
+{
+    length =l;
+}
+void Rectangle::setBreadth(int b)
+{
+    breadth =b;
+}
+int Rectangle:: area()
+{
+    return length*breadth;
+}
+int  Rectangle:: perimeter()
+{
+    return 2*(length+breadth);
+}
+bool  Rectangle::isSquare()
+{
+    return length==breadth;
+}
+ Rectangle:: ~Rectangle()
+ {
+     cout <<" Rectangle destroyed";
+ }

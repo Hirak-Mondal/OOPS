@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class car
+{
+    public:
+    //virtual function
+    // virtual void start(){
+    //     cout<<"car start"<<endl;
+    // }
+    // virtual void stop(){
+    //     cout<<"car stop"<<endl;
+    // }
+    
+    //pure virtual function 
+    virtual void start() = 0;
+    virtual void stop() = 0;
+};
+class toyota : public car
+{
+    public:
+    void start(){
+        cout<<"toyota start"<<endl;
+    }
+    void stop(){
+        cout<<"toyota stop"<<endl;
+    }
+};
+class swift : public car
+{
+    public:
+    void start(){
+        cout<<"swift start"<<endl;
+    }
+    void stop(){
+        cout<<"swift stop"<<endl;
+    }
+};
+
+int main(){
+    car *p = new toyota();
+    p -> start();
+    p -> stop();
+
+    p = new swift();
+    p -> start();
+    p -> stop();
+
+    return 0;
+}
